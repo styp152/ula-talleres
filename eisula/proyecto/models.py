@@ -7,44 +7,16 @@ from django.db import models
 
 class Persona(models.Model):
     """
-    Tutores asociados al Proyecto de Grado de los estudiantes
+    Abstraccion de datos comunes de Personas
     """
     nombre = models.CharField(max_length=32)
     apellido = models.CharField(max_length=32)
     cedula = models.CharField("cédula", max_length=9, unique=True)
     fecha_nacimiento = models.DateField("fecha de nacimiento", blank=True, null=True)
 
-    class Meta:
-        abstract = True
-
     def __unicode__(self):
         return "%s, %s" % (self.apellido, self.nombre)
 
-
-class Autor(Persona):
-    """
-    Estudiante
-    """
-    opcion = models.CharField("opción", max_length=32)
-
-    class Meta(Persona.Meta):
-        verbose_name_plural = "Autores"
-
-
-class Tutor(Persona):
-    """
-    Tutor
-    """
-    dependencia = models.CharField(max_length=32)
-
-    class Meta(Persona.Meta):
-        verbose_name_plural = "Tutores"
-
-class Jurado(Persona):
-    """
-    Miembros del Jurado
-    """
-    bla = models.CharField(max_length=32)
 
 class PalabraClave(models.Model):
     """
@@ -83,10 +55,10 @@ class ProyectoDeGrado(models.Model):
     """
     Proyecto de Grado del estudiante
     """
-    tutor = models.ManyToManyField(Tutor)
-    jurado = models.ManyToManyField(Jurado)
+    tutor = models.ManyToManyField(Persona, related_name="tutor")
+    jurado = models.ManyToManyField(Persona, related_name="jurado")
     titulo = models.CharField("título", max_length=32)
-    autor = models.OneToOneField(Autor)
+    autor = models.OneToOneField(Persona, related_name="autor")
     cota = models.CharField(max_length=16)
     resumen = models.TextField()
     fecha_publicacion = models.DateField("fecha de publicación", blank=True,
