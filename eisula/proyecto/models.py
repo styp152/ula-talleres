@@ -68,6 +68,7 @@ class ProyectoDeGrado(models.Model):
     observacion = models.TextField("observación", blank=True)
     materia = models.ManyToManyField(Materia, blank=True)
     biblioteca = models.ForeignKey(Biblioteca)
+    mencion_publicacion = models.BooleanField("¿Mención publicación?")
     
     class Meta:
         verbose_name_plural = "Proyectos de Grado"
