@@ -17,7 +17,6 @@ class Persona(models.Model):
     def __unicode__(self):
         return "%s, %s" % (self.apellido, self.nombre)
 
-
 class PalabraClave(models.Model):
     """
     Descriptores o palabras claves asociadas al tema del Proyecto de Grado
@@ -65,7 +64,7 @@ class ProyectoDeGrado(models.Model):
                                          null=True)
     palabra_clave = models.ManyToManyField(PalabraClave)
     enlace_repositorio = models.URLField()
-    nota = models.PositiveIntegerField(blank=True)
+    nota = models.PositiveIntegerField(blank=True, null=True)
     observacion = models.TextField("observación", blank=True)
     materia = models.ManyToManyField(Materia, blank=True)
     biblioteca = models.ForeignKey(Biblioteca)
