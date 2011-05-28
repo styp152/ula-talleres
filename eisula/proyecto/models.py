@@ -5,7 +5,7 @@
 
 from django.db import models
 
-class Tutor(models.Model):
+class Persona(models.Model):
     """
     Tutores asociados al Proyecto de Grado de los estudiantes
     """
@@ -15,22 +15,36 @@ class Tutor(models.Model):
     fecha_nacimiento = models.DateField("fecha de nacimiento", blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = "Tutores"
+        abstract = True
 
     def __unicode__(self):
         return "%s, %s" % (self.apellido, self.nombre)
 
-class Autor(models.Model):
+
+class Autor(Persona):
     """
     Estudiante
     """
-    nombre = models.CharField(max_length=32)
-    apellido = models.CharField(max_length=32)
-    cedula = models.CharField(max_length=9, unique=True)
-    fecha_nacimiento = models.DateField(blank=True, null=True)
+    opcion = models.CharField("opción", max_length=32)
 
-    def __unicode__(self):
-        return "%s, %s" % (self.apellido, self.nombre)
+    class Meta(Persona.Meta):
+        verbose_name_plural = "Autores"
+
+
+class Tutor(Persona):
+    """
+    Tutor
+    """
+    dependencia = models.CharField(max_length=32)
+
+    class Meta(Persona.Meta):
+        verbose_name_plural = "Tutores"
+
+class Jurado(Persona):
+    """
+    Miembros del Jurado
+    """
+    bla = models.CharField(max_length=32)
 
 class PalabraClave(models.Model):
     """
@@ -70,6 +84,7 @@ class ProyectoDeGrado(models.Model):
     Proyecto de Grado del estudiante
     """
     tutor = models.ManyToManyField(Tutor)
+    jurado = models.ManyToManyField(Jurado)
     titulo = models.CharField("título", max_length=32)
     autor = models.OneToOneField(Autor)
     cota = models.CharField(max_length=16)
