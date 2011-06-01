@@ -14,8 +14,34 @@ class Persona(models.Model):
     cedula = models.CharField("cédula", max_length=9, unique=True)
     fecha_nacimiento = models.DateField("fecha de nacimiento", blank=True, null=True)
 
+    class Meta:
+        abstract = True
+
     def __unicode__(self):
         return "%s, %s" % (self.apellido, self.nombre)
+
+
+class Estudiante(Persona):
+    """
+    Autor del Proyecto de Grado
+    """
+    opcion_CHOICES = (
+        ('SC', 'Sistemas Computacionales' ),
+        ('CA', 'Control y Automatización'),
+        ('IO', 'Investigación de Operaciones')
+    )
+    opcion = models.CharField("opción", max_length=2, choices=opcion_CHOICES)
+
+
+class Profesor(Persona):
+    """
+    Tutor o Jurado del Proyecto de Grado
+    """
+    dependencia = models.CharField(max_length=32)
+
+    class Meta:
+        verbose_name_plural = "Profesores"
+
 
 class PalabraClave(models.Model):
     """
@@ -54,14 +80,13 @@ class ProyectoDeGrado(models.Model):
     """
     Proyecto de Grado del estudiante
     """
-    tutor = models.ManyToManyField(Persona, related_name="tutor")
-    jurado = models.ManyToManyField(Persona, related_name="jurado")
+    tutor = models.ManyToManyField(Profesor, related_name="tutor")
+    jurado = models.ManyToManyField(Profesor, related_name="jurado")
     titulo = models.CharField("título", max_length=32)
-    autor = models.OneToOneField(Persona, related_name="autor")
+    autor = models.OneToOneField(Estudiante, related_name="autor")
     cota = models.CharField(max_length=16)
     resumen = models.TextField()
-    fecha_publicacion = models.DateField("fecha de publicación", blank=True,
-                                         null=True)
+    fecha_publicacion = models.DateField("fecha de publicación")
     palabra_clave = models.ManyToManyField(PalabraClave)
     enlace_repositorio = models.URLField()
     nota = models.PositiveIntegerField(blank=True, null=True)
