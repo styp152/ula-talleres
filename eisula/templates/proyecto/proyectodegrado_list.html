@@ -1,0 +1,7 @@
+<h1>Proyectos de Grado</h1>
+
+<ul>
+	{% for proyecto in proyectos %}
+	<li><a href="{{ proyecto.enlace_repositorio }}" title="{{ proyecto.titulo }}">{{ proyecto.titulo }}</a>, cuyo autor es: <a href="#">{{ proyecto.autor }}</a></li>
+	{% endfor %}
+</ul>

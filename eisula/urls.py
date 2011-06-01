@@ -6,7 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'eisula.views.home', name='home'),
-    # url(r'^eisula/', include('eisula.foo.urls')),
+    url(r'^eisula/', include('eisula.proyecto.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
