@@ -16,14 +16,15 @@ class AuthorView(ListView):
 
 
 class AuthorDetailView(DetailView):
-    model = Estudiante
+    model = Estudiante # = Estudiante.objects.filter(id=pk)
     context_object_name="author"
+    #template_name="proyecto/estudiante_detail.html"
 
     def get_context_data(self, **kwargs):
         # Llamado a la implementacion base para obtener el contexto
         context = super(AuthorDetailView, self).get_context_data(**kwargs)
         # Agregando una consulta para obtener el proyecto de grado.
-        #context['project'] = ProyectoDeGrado.objects(autor=
+        context['project'] = ProyectoDeGrado.objects.get(autor=self.object)
         return context
 
 

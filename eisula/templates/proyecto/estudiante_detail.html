@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}EISULA - Autor{% endblock %}
+
+{% block content %}
+<h2>Detalle del estudiante: {{ author.apellido }}, {{ author.nombre }}</h2>
+
+<dl>
+	<dt>Apellido</dt>
+	<dd>{{ author.apellido }}</dd>
+	<dt>Nombre</dt>
+	<dd>{{ author.nombre }}</dd>
+	<dt>Fecha de Nacimiento</dt>
+	<dd>{{ author.fecha_nacimiento|date:"Y/m/d" }}</dd>
+	<dt>Opción</dt>
+	<dd>{{ author.opcion }}</dd>
+	<dt>Proyecto</dt>
+	<dd>{{ project.titulo }}</dd>
+</dl>
+{% endblock content %}
