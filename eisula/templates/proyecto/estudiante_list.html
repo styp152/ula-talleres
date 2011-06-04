@@ -1,7 +1,14 @@
-<h1>Estudiantes</h1>
+{% extends "base.html" %}
+
+{% block title %}EISULA - Autores{% endblock %}
+{% block content %}
+<h2>Estudiantes</h2>
 
 <ul>
 	{% for author in author_list %}
-	<li><a href="#" title="{{ author.apellido }}, {{ author.nombre }}">{{ author.apellido }}, {{ author.nombre }}</a></li>
+	<li><a href="{{ author.id }}" title="{{ author.apellido }}, {{ author.nombre }}">{{ author.apellido }}, {{ author.nombre }}</a></li>
+	{% empty %}
+	<li>No existen estudiantes registrados.</li>
 	{% endfor %}
 </ul>
+{% endblock content %}

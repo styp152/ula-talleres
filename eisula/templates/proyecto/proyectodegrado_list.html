@@ -1,7 +1,15 @@
-<h1>Proyectos de Grado</h1>
+{% extends "base.html" %}
 
+{% block title %} EISULA - Proyectos de Grado {% endblock %}
+
+{% block content %}
+<h2>Proyectos de Grado</h2>
+<div style="float: left; padding: 10px;"><img src="{{ MEDIA_URL }}coffee.png" alt=    "image" /></div>
 <ul>
 	{% for project in project_list %}
 	<li><a href="{{ project.enlace_repositorio }}" title="{{ project.titulo }}">{{ project.titulo }}</a>, cuyo autor es: <a href="#">{{ project.autor }}</a></li>
+	{% empty %}
+	<li>No se ha registrado ningún proyecto de grado hasta ahora.</li>
 	{% endfor %}
 </ul>
+{% endblock content %}
