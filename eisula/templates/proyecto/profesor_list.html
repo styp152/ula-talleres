@@ -1,7 +1,16 @@
-<h1>Profesores</h1>
+{% extends "base.html" %}
 
+{% block title %}EISULA - Profesores{% endblock %}
+
+{% block content %}
+<h2>Profesores</h2>
+{% if professor_list %}
 <ul>
 	{% for professor in professor_list %}
 	<li><a href="#" title="{{ professor.apellido }}, {{ professor.nombre }}">{{ professor.apellido }}, {{ professor.nombre }}</a></li>
 	{% endfor %}
 </ul>
+{% else %}
+<p>No se han registrado profesores.</p>
+{% endif %}
+{% endblock content %}

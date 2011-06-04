@@ -1,8 +1,17 @@
-<h1>Materias</h1>
+{% extends "base.html" %}
 
+{% block title %}EISULA - Materias{% endblock %}
+
+{% block content %}
+<h2>Materias</h2>
+{% if course_list %}
 <dl>
 	{% for course in course_list %}
 	<dt><a href="#" title="{{ course.titulo }}">{{ course.titulo }}</a></dt>
 	<dd>{{ course.descripcion }}</dd>
 	{% endfor %}
 </dl>
+{% else %}
+<p>No se han registrado materias.</p>
+{% endif %}
+{% endblock content %}

@@ -1,7 +1,16 @@
-<h1>Bibliotecas</h1>
+{% extends "base.html" %}
 
+{% block title %}EISULA - Bibliotecas{% endblock %}
+
+{% block content %}
+<h2>Bibliotecas</h2>
+{% if library_list %}
 <ul>
 	{% for library in library_list %}
 	<li><a href="#" title="{{ library.nombre }}">{{ library.nombre }}</a></li>
 	{% endfor %}
 </ul>
+{% else %}
+<p>No se han registrado bibliotecas.</p>
+{% endif %}
+{% endblock content %}
