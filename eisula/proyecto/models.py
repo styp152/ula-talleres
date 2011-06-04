@@ -56,6 +56,7 @@ class PalabraClave(models.Model):
     def __unicode__(self):
         return self.etiqueta
 
+
 class Materia(models.Model):
     """
     Materias asociadas al tema de Proyecto de Grado
@@ -66,6 +67,7 @@ class Materia(models.Model):
     def __unicode__(self):
         return self.titulo
 
+
 class Biblioteca(models.Model):
     """
     Biblioteca donde se encuentra la publicación asociada al Proyecto de Grado
@@ -75,6 +77,7 @@ class Biblioteca(models.Model):
 
     def __unicode__(self):
         return self.nombre
+
 
 class ProyectoDeGrado(models.Model):
     """

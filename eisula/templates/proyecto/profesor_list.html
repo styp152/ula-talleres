@@ -1,0 +1,7 @@
+<h1>Profesores</h1>
+
+<ul>
+	{% for professor in professor_list %}
+	<li><a href="#" title="{{ professor.apellido }}, {{ professor.nombre }}">{{ professor.apellido }}, {{ professor.nombre }}</a></li>
+	{% endfor %}
+</ul>

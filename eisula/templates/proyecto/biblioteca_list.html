@@ -1,0 +1,7 @@
+<h1>Bibliotecas</h1>
+
+<ul>
+	{% for library in library_list %}
+	<li><a href="#" title="{{ library.nombre }}">{{ library.nombre }}</a></li>
+	{% endfor %}
+</ul>

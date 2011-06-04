@@ -1,0 +1,8 @@
+<h1>Materias</h1>
+
+<dl>
+	{% for course in course_list %}
+	<dt><a href="#" title="{{ course.titulo }}">{{ course.titulo }}</a></dt>
+	<dd>{{ course.descripcion }}</dd>
+	{% endfor %}
+</dl>
