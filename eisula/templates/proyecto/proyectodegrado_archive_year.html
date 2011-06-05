@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} EISULA - Proyectos de Grado {% endblock %}
+
+{% block content %}
+<h2>Proyectos de grado para el año: {{ year }}</h2>
+<ul>
+	{% for month in date_list %}
+	<li><a href="/eisula/proyectos/{{ month|date:"Y/b/" }}" title="{{ month|date:"b" }}">{{ month|date:"b" }}</a></li>
+	{% empty %}
+	<li>No se ha registrado ningún proyecto de grado hasta ahora.</li>
+	{% endfor %}
+</ul>
+{% endblock content %}

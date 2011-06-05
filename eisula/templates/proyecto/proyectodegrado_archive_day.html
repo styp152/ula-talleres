@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} EISULA - Proyectos de Grado {% endblock %}
+
+{% block content %}
+<h2>Proyectos de grado para el día {{ day }}</h2>
+<ul>
+	{% for object in object_list %}
+	<li><a href="/eisula/proyectos/{{ day|date:"Y/b/d/" }}{{ object.id }}/" title="{{ object.titulo }}">{{ object.titulo }}</a></li>
+	{% empty %}
+	<li>No se ha registrado ningún proyecto de grado hasta ahora.</li>
+	{% endfor %}
+</ul>
+{% endblock content %}

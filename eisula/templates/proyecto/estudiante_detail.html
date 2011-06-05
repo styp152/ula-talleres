@@ -15,6 +15,6 @@
 	<dt>Opción</dt>
 	<dd>{{ author.opcion }}</dd>
 	<dt>Proyecto</dt>
-	<dd>{{ project.titulo }}</dd>
+	<dd><a href="/eisula/proyectos/{{ project.fecha_publicacion|date:"Y/b/d/" }}{{ project.id }}">{{ project.titulo }}</a></dd>
 </dl>
 {% endblock content %}

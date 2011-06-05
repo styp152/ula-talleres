@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} EISULA - Proyectos de Grado {% endblock %}
+
+{% block content %}
+<h2>Proyecto de grado: {{ object.titulo }}</h2>
+
+<dl>
+<dt>Autor</dt>
+<dd><a href="/eisula/autores/{{ object.autor.id }}/" title="{{ object.autor }}">{{ object.autor }}</a></dd>
+<dt>Cota</dt>
+<dd>{{ object.cota }}</dd>
+<dt>Resumen</dt>
+<dd>{{ object.resumen }}</dd>
+<dt>Repositorio</dt>
+<dd><a href="{{ object.enlace_repositorio }}" title="{{ object.titulo }}">{{ object.enlace_repositorio }}</a></dd>
+<dt>Nota</dt>
+<dd>{{ object.nota }}</dd>
+<dt>Observaciones</dt>
+<dd>{{ object.observacion }}</dd>
+<dt>Biblioteca</dt>
+<dd><a href="/eisula/bibliotecas/{{ object.biblioteca.id }}">{{ object.biblioteca }}</a></dd>
+<dt>Mención Publicación</dt>
+<dd>{{ object.mencion_publicacion }}</dd>
+</dl>
+{% endblock content %}

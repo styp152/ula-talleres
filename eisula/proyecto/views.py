@@ -1,12 +1,35 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import (ListView, DetailView, ArchiveIndexView,
+                                  YearArchiveView, MonthArchiveView,
+                                  DayArchiveView, DateDetailView)
 
-from eisula.proyecto.models import ProyectoDeGrado, Estudiante, Profesor, \
-                                   Materia, Biblioteca
+from eisula.proyecto.models import (ProyectoDeGrado, Estudiante, Profesor,
+                                    Materia, Biblioteca)
 
-class IndexView(ListView):
-    queryset = ProyectoDeGrado.objects.order_by("-fecha_publicacion")
-    context_object_name = "project_list"
-    #template_name = "proyecto/proyectodegrado_list.html"
+class ThesisArchiveIndexView(ArchiveIndexView):
+    model = ProyectoDeGrado
+    date_field = "fecha_publicacion"
+    context_object_name = "project_latest"
+    #template_name = "proyecto/proyectodegrado_archive.html"
+
+
+class ThesisYearArchiveView(YearArchiveView):
+    model = ProyectoDeGrado
+    date_field = "fecha_publicacion"
+
+
+class ThesisMonthArchiveView(MonthArchiveView):
+    model = ProyectoDeGrado
+    date_field = "fecha_publicacion"
+
+
+class ThesisDayArchiveView(DayArchiveView):
+    model = ProyectoDeGrado
+    date_field = "fecha_publicacion"
+
+
+class ThesisDateDetailView(DateDetailView):
+    model = ProyectoDeGrado
+    date_field = "fecha_publicacion"
 
 
 class AuthorView(ListView):

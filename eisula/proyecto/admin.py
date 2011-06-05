@@ -1,6 +1,6 @@
 from django.contrib import admin
-from eisula.proyecto.models import ProyectoDeGrado, Estudiante, Profesor, \
-                                   PalabraClave, Materia, Biblioteca
+from eisula.proyecto.models import (ProyectoDeGrado, Estudiante, Profesor,
+                                    PalabraClave, Materia, Biblioteca)
 
 class ProyectoDeGradoAdmin(admin.ModelAdmin):
     date_hierarchy = 'fecha_publicacion'

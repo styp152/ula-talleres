@@ -1,11 +1,20 @@
 from django.conf.urls.defaults import patterns, url
-from eisula.proyecto.views import IndexView, CourseView, CourseDetailView, \
-                                  ProfessorView, ProfessorDetailView, \
-                                  AuthorView, AuthorDetailView, \
-                                  LibraryView, LibraryDetailView
+from eisula.proyecto.views import (ThesisArchiveIndexView,
+                                   ThesisYearArchiveView,
+                                   ThesisMonthArchiveView, ThesisDayArchiveView,
+                                   ThesisDateDetailView, CourseView,
+                                   CourseDetailView, ProfessorView,
+                                   ProfessorDetailView, AuthorView,
+                                   AuthorDetailView, LibraryView,
+                                   LibraryDetailView)
 
 urlpatterns = patterns('',
-    url(r'^$', IndexView.as_view()),
+    url(r'^$', ThesisArchiveIndexView.as_view()),
+    url(r'^proyectos/(?P<year>\d{4})/$', ThesisYearArchiveView.as_view()),
+    url(r'^proyectos/(?P<year>\d{4})/(?P<month>\w{3})/$', ThesisMonthArchiveView.as_view()),
+    url(r'^proyectos/(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/$', ThesisDayArchiveView.as_view()),
+    url(r'^proyectos/(?P<year>\d{4})/(?P<month>\w{3})/(?P<day>\d{2})/(?P<pk>\d+)/$',
+        ThesisDateDetailView.as_view()),
     url(r'^materias/(?P<pk>\d+)/$', CourseDetailView.as_view()),
     url(r'^materias/$', CourseView.as_view()),
     url(r'^profesores/(?P<pk>\d+)/$', ProfessorDetailView.as_view()),
