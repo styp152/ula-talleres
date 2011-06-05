@@ -11,6 +11,13 @@ class ThesisArchiveIndexView(ArchiveIndexView):
     context_object_name = "project_latest"
     #template_name = "proyecto/proyectodegrado_archive.html"
 
+    def get_context_data(self, **kwargs):
+        context = super(ThesisArchiveIndexView, self).get_context_data(**kwargs)
+        context['archives'] = ProyectoDeGrado.objects.dates('fecha_publicacion',
+                                                            'month',
+                                                            order="DESC")
+        return context
+
 
 class ThesisYearArchiveView(YearArchiveView):
     model = ProyectoDeGrado
