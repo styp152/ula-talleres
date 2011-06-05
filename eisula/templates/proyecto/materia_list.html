@@ -7,7 +7,7 @@
 {% if course_list %}
 <dl>
 	{% for course in course_list %}
-	<dt><a href="#" title="{{ course.titulo }}">{{ course.titulo }}</a></dt>
+	<dt><a href="/eisula/materias/{{ course.id }}" title="{{ course.titulo }}">{{ course.titulo }}</a></dt>
 	<dd>{{ course.descripcion }}</dd>
 	{% endfor %}
 </dl>

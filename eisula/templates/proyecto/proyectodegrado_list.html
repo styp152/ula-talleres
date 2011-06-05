@@ -7,7 +7,7 @@
 <div style="float: left; padding: 10px;"><img src="{{ MEDIA_URL }}coffee.png" alt=    "image" /></div>
 <ul>
 	{% for project in project_list %}
-	<li><a href="{{ project.enlace_repositorio }}" title="{{ project.titulo }}">{{ project.titulo }}</a>, cuyo autor es: <a href="#">{{ project.autor }}</a></li>
+	<li><a href="{{ project.enlace_repositorio }}" title="{{ project.titulo }}">{{ project.titulo }}</a>, cuyo autor es: <a href="/eisula/autores/{{ project.autor.id }}" title="{{ project.autor }}">{{ project.autor }}</a></li>
 	{% empty %}
 	<li>No se ha registrado ningún proyecto de grado hasta ahora.</li>
 	{% endfor %}

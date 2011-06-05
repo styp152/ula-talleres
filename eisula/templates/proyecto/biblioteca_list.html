@@ -7,7 +7,7 @@
 {% if library_list %}
 <ul>
 	{% for library in library_list %}
-	<li><a href="#" title="{{ library.nombre }}">{{ library.nombre }}</a></li>
+	<li><a href="/eisula/bibliotecas/{{ library.id }}" title="{{ library.nombre }}">{{ library.nombre }}</a></li>
 	{% endfor %}
 </ul>
 {% else %}

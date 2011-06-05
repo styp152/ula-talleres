@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}EISULA - Materia{% endblock %}
+
+{% block content %}
+<h2>Detalle de materia: {{ course.titulo }}</h2>
+
+{% if course.descripcion %}
+<p>{{ course.descripcion }}</p>
+{% else %}
+<p>No existe descripción para esta materia</p>
+{% endif %}
+{% endblock content %}

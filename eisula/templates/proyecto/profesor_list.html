@@ -7,7 +7,7 @@
 {% if professor_list %}
 <ul>
 	{% for professor in professor_list %}
-	<li><a href="#" title="{{ professor.apellido }}, {{ professor.nombre }}">{{ professor.apellido }}, {{ professor.nombre }}</a></li>
+	<li><a href="/eisula/profesores/{{ professor.id}}" title="{{ professor.apellido }}, {{ professor.nombre }}">{{ professor.apellido }}, {{ professor.nombre }}</a></li>
 	{% endfor %}
 </ul>
 {% else %}

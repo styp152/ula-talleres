@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}EISULA - Biblioteca{% endblock %}
+
+{% block content %}
+<h2>Detalle de biblioteca: {{ library.nombre }}</h2>
+
+{% if library.direccion %}
+<p>{{ library.direccion }}</p>
+{% else %}
+<p>No se ha definido una dirección para esta biblioteca.</p>
+{% endif %}
+{% endblock content %}
