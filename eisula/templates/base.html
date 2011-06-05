@@ -20,6 +20,7 @@
 <div id="menu">
 <ul>
 <li><a href="/eisula">Inicio</a></li>
+<li><a href="/eisula/proyectos/">Proyectos</a></li>
 <li><a href="/eisula/autores/">Autores</a></li>
 <li><a href="/eisula/profesores/">Profesores</a></li>
 <li><a href="/eisula/materias/">Materias</a></li>
@@ -52,6 +53,7 @@
 </div>
 
 <div id="sidebar">
+{% block sidebar %}
 <h3>Palabras Claves</h3>
 <ul>
 <li><a href="#">Conflantur</a></li>
@@ -81,7 +83,7 @@
 <li><a href="#">Nulla mattis</a></li>
 <li><a href="#">Venturum ex dubitare</a></li>
 </ul>
-
+{% endblock sidebar %}
 </div>
 
 <div style="clear: both;"> </div>
